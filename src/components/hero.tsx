@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export type Slide = {
@@ -17,6 +17,7 @@ export function Hero({ slides }: { slides: Slide[] }) {
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
   const n = slides.length;
+  const touchX = useRef<number | null>(null);
 
   useEffect(() => {
     if (paused) return;
@@ -31,6 +32,13 @@ export function Hero({ slides }: { slides: Slide[] }) {
       className="relative h-[250px] overflow-hidden sm:h-[300px] md:h-[600px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
+      onTouchEnd={(e) => {
+        if (touchX.current == null) return;
+        const dx = e.changedTouches[0].clientX - touchX.current;
+        touchX.current = null;
+        if (Math.abs(dx) > 40) setI((x) => (x + (dx < 0 ? 1 : -1) + n) % n);
+      }}
     >
       {slides.map((s, idx) => (
         <div
@@ -69,14 +77,14 @@ export function Hero({ slides }: { slides: Slide[] }) {
       <button
         onClick={() => setI((i - 1 + n) % n)}
         aria-label="Previous slide"
-        className="absolute top-0 left-0 flex h-full w-16 items-start justify-center pt-24 text-ink/70 hover:text-ink md:h-[250px]"
+        className="absolute top-0 left-0 hidden h-full w-16 sm:flex items-start justify-center pt-24 text-ink/70 hover:text-ink md:h-[250px]"
       >
         <ChevronLeft size={48} strokeWidth={1.2} />
       </button>
       <button
         onClick={() => setI((i + 1) % n)}
         aria-label="Next slide"
-        className="absolute top-0 right-0 flex h-full w-16 items-start justify-center pt-24 text-ink/70 hover:text-ink md:h-[250px]"
+        className="absolute top-0 right-0 hidden h-full w-16 sm:flex items-start justify-center pt-24 text-ink/70 hover:text-ink md:h-[250px]"
       >
         <ChevronRight size={48} strokeWidth={1.2} />
       </button>

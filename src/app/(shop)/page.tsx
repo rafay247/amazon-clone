@@ -126,9 +126,10 @@ export default function Home() {
 
 function GridRow({ grids }: { grids: Grid[] }) {
   return (
-    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    // Phones: a swipeable strip of cards instead of four full-screen cards stacked.
+    <div className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 lg:grid-cols-4">
       {grids.map((g) => (
-        <section key={g.title} className="flex flex-col bg-white p-5">
+        <section key={g.title} className="flex w-[78%] shrink-0 snap-center flex-col bg-white p-4 sm:w-auto sm:p-5">
           <h2 className="mb-3 text-xl leading-tight font-bold">{g.title}</h2>
           <div className="grid flex-1 grid-cols-2 gap-x-4 gap-y-3">
             {g.items.map((it) => (

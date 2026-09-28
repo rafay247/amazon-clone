@@ -311,8 +311,10 @@ function PaymentForm({ initialName, onDone }: { initialName: string; onDone: (p:
             <span className="mb-1 block font-bold">Security code (CVV)</span>
             <input value={cvc} onChange={(e) => setCvc(e.target.value.replace(/\D/g, "").slice(0, 4))} inputMode="numeric" autoComplete="cc-csc" className="input" />
           </label>
-          <p className="flex items-center gap-1.5 text-xs text-muted sm:col-span-2">
-            <Lock size={12} /> Demo store: use test card <b>4242 4242 4242 4242</b>, any future date and any CVV. Card numbers are never stored.
+          <p className="text-xs text-muted sm:col-span-2">
+            <Lock size={12} className="mr-1 inline align-[-1px]" />
+            Demo store: use test card <b className="whitespace-nowrap">4242 4242 4242 4242</b>, any future date and any CVV. Card
+            numbers are never stored.
           </p>
         </div>
       )}

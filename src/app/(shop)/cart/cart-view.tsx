@@ -100,7 +100,7 @@ export function CartView() {
         </div>
 
         {active.length > 0 && (
-          <aside className="space-y-3 bg-white p-5 lg:sticky lg:top-4">
+          <aside className="order-first space-y-3 bg-white p-5 lg:sticky lg:top-4 lg:order-none">
             {subtotal >= FREE_SHIPPING ? (
               <p className="flex gap-1.5 text-xs text-success">
                 <CheckCircle2 size={18} className="shrink-0" />

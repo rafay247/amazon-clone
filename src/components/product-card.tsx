@@ -11,10 +11,13 @@ import { toCartProduct } from "@/lib/cart-product";
 export function ResultCard({ p, now }: { p: Product; now: Date }) {
   const href = productHref(p);
   return (
-    <div className="flex flex-col overflow-hidden rounded-md border border-[#e7e7e7] bg-white">
-      <Link href={href} className="relative flex h-[240px] items-center justify-center bg-[#f7f7f7] p-4">
+    <div className="flex overflow-hidden rounded-md border border-[#e7e7e7] bg-white sm:flex-col">
+      <Link
+        href={href}
+        className="relative flex w-[40%] shrink-0 items-center justify-center bg-[#f7f7f7] p-2 sm:h-[240px] sm:w-auto sm:p-4"
+      >
         {p.discount >= 20 && (
-          <span className="absolute top-2 left-2 rounded-sm bg-deal px-1.5 py-0.5 text-xs font-bold text-white">
+          <span className="absolute top-2 left-2 rounded-sm bg-deal px-1.5 py-0.5 text-[11px] font-bold text-white sm:text-xs">
             Limited time deal
           </span>
         )}
@@ -26,8 +29,8 @@ export function ResultCard({ p, now }: { p: Product; now: Date }) {
           className="max-h-full w-auto object-contain mix-blend-multiply"
         />
       </Link>
-      <div className="flex flex-1 flex-col gap-1 p-3">
-        <Link href={href} className="line-clamp-3 text-base leading-snug hover:text-link-hover">
+      <div className="flex min-w-0 flex-1 flex-col gap-1 p-3">
+        <Link href={href} className="line-clamp-3 text-[15px] leading-snug hover:text-link-hover sm:text-base">
           {p.brand && !p.title.toLowerCase().startsWith(p.brand.toLowerCase()) && <span className="font-bold">{p.brand} </span>}
           {p.title}
         </Link>

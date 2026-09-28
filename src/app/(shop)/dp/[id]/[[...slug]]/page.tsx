@@ -14,6 +14,7 @@ import { MiniCard } from "@/components/product-card";
 import { RatingHistogram, ReviewList } from "@/components/reviews";
 import { BrowsingHistoryRow, RecordView } from "@/components/browsing-history";
 import { HeartButton } from "@/components/add-to-list";
+import { MobileBuyBar } from "@/components/mobile-buy-bar";
 import { createClient } from "@/lib/supabase/server";
 
 export async function generateMetadata({ params }: PageProps<"/dp/[id]/[[...slug]]">): Promise<Metadata> {
@@ -52,7 +53,8 @@ export default async function ProductPage({ params }: PageProps<"/dp/[id]/[[...s
   ].filter(Boolean) as string[];
 
   return (
-    <div className="mx-auto max-w-[1500px] px-4 pb-10">
+    <div className="mx-auto max-w-[1500px] px-4 pb-24 lg:pb-10">
+      <MobileBuyBar product={cp} />
       <RecordView
         item={{ id: p.id, slug: p.slug, title: p.title, image: p.thumbnail, price: p.price, rating: p.rating, ratingCount: p.ratingCount }}
       />

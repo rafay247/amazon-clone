@@ -7,8 +7,8 @@ export default function CheckoutLayout({ children }: { children: React.ReactNode
     <div className="flex min-h-full flex-1 flex-col bg-white">
       <header className="flex h-[60px] items-center justify-between bg-nav px-4 text-white">
         <Logo />
-        <h1 className="flex items-center gap-2 text-xl sm:text-2xl">
-          Secure checkout <Lock size={18} className="text-[#999]" />
+        <h1 className="flex items-center gap-1.5 text-base sm:gap-2 sm:text-2xl">
+          Secure checkout <Lock size={16} className="text-[#999]" />
         </h1>
         <Link href="/cart" className="nav-hover px-2 py-1 text-sm">
           Cart

@@ -27,12 +27,16 @@ export function Header({ user }: { user: SessionUser }) {
   const depts = departments.map(({ id, name }) => ({ id, name }));
   return (
     <header className="sticky top-0 z-40 md:static">
-      <div className="flex h-[60px] items-center gap-1 bg-nav px-2 text-white sm:gap-2">
+      <div className="flex flex-wrap items-center gap-x-1 gap-y-1.5 bg-nav px-2 pt-1.5 pb-2 text-white sm:gap-x-2 md:h-[60px] md:flex-nowrap md:py-0">
         <Logo />
         <DeliverToButton />
-        <Suspense fallback={<div className="h-10 flex-1 rounded-md bg-white" />}>
-          <SearchBar departments={depts} />
-        </Suspense>
+        <div className="flex-1 md:hidden" />
+        {/* Below md the search box takes its own full-width row, like the Amazon app. */}
+        <div className="order-last flex min-w-0 basis-full md:order-none md:basis-auto md:flex-1">
+          <Suspense fallback={<div className="h-10 flex-1 rounded-md bg-white" />}>
+            <SearchBar departments={depts} />
+          </Suspense>
+        </div>
         <AccountMenu user={user} />
         <Link href="/orders" className="nav-hover hidden shrink-0 px-1.5 py-1.5 leading-tight md:block">
           <span className="block text-xs">Returns</span>

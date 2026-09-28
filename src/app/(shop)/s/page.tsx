@@ -79,11 +79,24 @@ export default async function SearchPage({ searchParams }: PageProps<"/s">) {
           {r.total ? `${from}-${to} of ${r.total} results for ` : "No results for "}
           <span className="font-bold text-[#c45500]">{heading(q)}</span>
         </p>
-        <SortSelect value={q.sort ?? "featured"} />
+        <div className="flex items-center gap-2">
+          {/* Phones: toggles the filter panel below via the checkbox (no JS needed). */}
+          <label
+            htmlFor="filters-toggle"
+            className="cursor-pointer rounded-lg border border-line bg-[#f0f2f2] px-3 py-1 text-xs shadow-sm md:hidden"
+          >
+            Filters{activeFilters && <span className="ml-1 font-bold text-[#c45500]">•</span>}
+          </label>
+          <SortSelect value={q.sort ?? "featured"} />
+        </div>
       </div>
 
-      <div className="flex gap-6 px-4 py-4">
-        <aside className="hidden w-[240px] shrink-0 space-y-5 text-sm md:block" aria-label="Filters">
+      <div className="flex flex-col gap-6 px-4 py-4 md:flex-row">
+        <input id="filters-toggle" type="checkbox" className="peer sr-only" />
+        <aside
+          className="hidden shrink-0 space-y-5 rounded-lg border border-line p-4 text-sm peer-checked:block md:block md:w-[240px] md:rounded-none md:border-0 md:p-0"
+          aria-label="Filters"
+        >
           {activeFilters && (
             <Link href={href({ brand: null, rating: null, min: null, max: null, prime: null, deals: null })} className="link text-sm">
               ‹ Clear all filters
