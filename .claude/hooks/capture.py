@@ -198,7 +198,9 @@ def append_entry(path, session_id, kind, ts, model, body):
 def last_logged_model(path):
     try:
         with open(path, encoding="utf-8") as f:
-            models = re.findall(r"^model: (.+)$", f.read(), flags=re.M)
+            # Only entry metadata: prompt bodies can contain pasted "model:" lines.
+            models = re.findall(r"^\[LOG_ENTRY [^\]]*\]\ntimestamp: [^\n]*\nmodel: (.+)$",
+                                f.read(), flags=re.M)
         return models[-1].strip() if models else None
     except OSError:
         return None
@@ -206,15 +208,30 @@ def last_logged_model(path):
 
 # ---------- hook handlers ----------
 
+def latest_model_in_other_logs(exclude):
+    """Fresh sessions have no assistant turn yet; reuse the most recent known model."""
+    for p in sorted(glob.glob(os.path.join(LOG_DIR, "*.md")), reverse=True):
+        if p != exclude:
+            m = last_logged_model(p)
+            if m and m != "unknown":
+                return m
+    return None
+
+
 def on_session_start(data):
-    ensure_log(data["session_id"], data.get("model"))
+    # The VS Code extension omits the model here, and a session with no prompts
+    # should not leave an empty log behind, so only create the file when it's known.
+    if data.get("model"):
+        ensure_log(data["session_id"], data["model"])
 
 
 def on_prompt(data):
     sid = data["session_id"]
     model = last_model(read_transcript(data.get("transcript_path", ""))) or data.get("model")
     path = ensure_log(sid, model)
-    model = model or last_logged_model(path)
+    if not model:
+        logged = last_logged_model(path)
+        model = logged if logged not in (None, "unknown") else latest_model_in_other_logs(path)
     append_entry(path, sid, "PROMPT", now_iso(), model, data.get("prompt", ""))
 
 
