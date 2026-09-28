@@ -91,7 +91,7 @@ export function Checkout({ addresses: initial, userName }: { addresses: Address[
           </button>
           {addressId && (
             <div className="mt-4">
-              <button onClick={() => setStep("payment")} className="btn-yellow">
+              <button onClick={() => setStep(payment ? "review" : "payment")} className="btn-yellow">
                 Deliver to this address
               </button>
             </div>
@@ -145,9 +145,19 @@ export function Checkout({ addresses: initial, userName }: { addresses: Address[
       </div>
 
       <aside className="space-y-3 rounded-lg border border-line bg-white p-5 text-sm md:sticky md:top-4">
-        <button onClick={submit} disabled={placing} className="btn-yellow w-full">
-          {placing ? "Placing your order…" : ready ? "Place your order" : address ? "Use this payment method" : "Deliver to this address"}
-        </button>
+        {step === "payment" ? (
+          <button type="submit" form="payment-form" className="btn-yellow w-full">
+            Use this payment method
+          </button>
+        ) : step === "address" ? (
+          <button onClick={() => (address ? setStep(payment ? "review" : "payment") : setAdding(true))} className="btn-yellow w-full">
+            {address ? "Deliver to this address" : "Add a delivery address"}
+          </button>
+        ) : (
+          <button onClick={submit} disabled={placing || !ready} className="btn-yellow w-full">
+            {placing ? "Placing your order…" : "Place your order"}
+          </button>
+        )}
         {error && (
           <p role="alert" className="rounded-md border border-deal bg-[#fcf4f4] p-2 text-xs text-deal">
             {error}
@@ -258,7 +268,7 @@ function PaymentForm({ initialName, onDone }: { initialName: string; onDone: (p:
   }
 
   return (
-    <form onSubmit={submit} className="space-y-3 text-sm">
+    <form id="payment-form" onSubmit={submit} className="space-y-3 text-sm">
       <label className={`flex cursor-pointer items-center gap-3 rounded-lg border p-3 ${method === "card" ? "border-[#fbd8b4] bg-[#fcf5ee]" : "border-line"}`}>
         <input type="radio" checked={method === "card"} onChange={() => setMethod("card")} className="accent-link" />
         <CreditCard size={18} /> Credit or debit card

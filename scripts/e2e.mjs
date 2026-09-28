@@ -38,7 +38,7 @@ try {
 
   step("product page");
   await page.locator("a[href^='/dp/']").first().click();
-  await page.waitForURL(/\/dp\//);
+  await page.waitForURL((u) => u.pathname.startsWith("/dp/"));
   await page.getByRole("button", { name: "Add to cart" }).first().click();
   await page.getByText("Added to cart").waitFor();
   await shot("drawer");
@@ -51,12 +51,12 @@ try {
   await page.getByRole("link", { name: "Proceed to checkout" }).click();
 
   step("sign in (redirected from checkout)");
-  await page.waitForURL(/\/signin/);
+  await page.waitForURL((u) => u.pathname === "/signin");
   await page.getByLabel("Email").fill(DEMO.email);
   await page.getByRole("button", { name: "Continue" }).click();
   await page.getByLabel("Password").fill(DEMO.password);
   await page.getByRole("button", { name: "Sign in" }).click();
-  await page.waitForURL(/\/checkout/);
+  await page.waitForURL((u) => u.pathname === "/checkout");
   await page.getByRole("heading", { name: "Order Summary" }).waitFor();
 
   step("address");
@@ -67,9 +67,9 @@ try {
       const d = page.getByRole("dialog");
       await d.getByLabel("Phone number").fill("+1 615 555 0100");
       await d.getByPlaceholder("Street address or P.O. Box").fill("2400 Demo Street");
-      await d.getByLabel("City").fill("Nashville");
-      await d.getByLabel("State").selectOption("TN");
-      await d.getByLabel("ZIP Code").fill("37217");
+      await d.getByLabel("City", { exact: true }).fill("Nashville");
+      await d.locator("select[name=state]").selectOption("TN");
+      await d.getByLabel("ZIP Code", { exact: true }).fill("37217");
       await d.getByRole("button", { name: "Use this address" }).click();
     } else {
       await page.getByRole("button", { name: "Deliver to this address" }).first().click();
@@ -80,7 +80,7 @@ try {
   await page.getByPlaceholder("4242 4242 4242 4242").fill("4242 4242 4242 4242");
   await page.getByPlaceholder("MM/YY").fill("1229");
   await page.getByLabel("Security code (CVV)").fill("123");
-  await page.getByRole("button", { name: "Use this payment method" }).last().click();
+  await page.getByRole("button", { name: "Use this payment method" }).first().click();
   await page.getByText("Visa ending in 4242").waitFor();
   await shot("checkout");
 

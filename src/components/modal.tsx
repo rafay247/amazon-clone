@@ -15,9 +15,10 @@ export function Modal({
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
+    // No close() in cleanup: it fires the dialog's close event, which would call onClose
+    // during React's dev double-mount and instantly shut the modal. Unmounting removes it anyway.
     const d = ref.current;
-    d?.showModal();
-    return () => d?.close();
+    if (d && !d.open) d.showModal();
   }, []);
   return (
     <dialog
