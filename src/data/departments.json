@@ -1,0 +1,140 @@
+[
+  {
+    "id": "electronics",
+    "name": "Electronics",
+    "categories": [
+      {
+        "id": "smartphones",
+        "name": "Cell Phones"
+      },
+      {
+        "id": "laptops",
+        "name": "Laptops"
+      },
+      {
+        "id": "tablets",
+        "name": "Tablets"
+      },
+      {
+        "id": "mobile-accessories",
+        "name": "Phone Accessories"
+      }
+    ]
+  },
+  {
+    "id": "fashion",
+    "name": "Fashion",
+    "categories": [
+      {
+        "id": "mens-shirts",
+        "name": "Men's Shirts"
+      },
+      {
+        "id": "mens-shoes",
+        "name": "Men's Shoes"
+      },
+      {
+        "id": "mens-watches",
+        "name": "Men's Watches"
+      },
+      {
+        "id": "womens-dresses",
+        "name": "Women's Dresses"
+      },
+      {
+        "id": "womens-shoes",
+        "name": "Women's Shoes"
+      },
+      {
+        "id": "womens-bags",
+        "name": "Handbags"
+      },
+      {
+        "id": "womens-jewellery",
+        "name": "Jewelry"
+      },
+      {
+        "id": "womens-watches",
+        "name": "Women's Watches"
+      },
+      {
+        "id": "tops",
+        "name": "Women's Tops"
+      },
+      {
+        "id": "sunglasses",
+        "name": "Sunglasses"
+      }
+    ]
+  },
+  {
+    "id": "home-kitchen",
+    "name": "Home & Kitchen",
+    "categories": [
+      {
+        "id": "kitchen-accessories",
+        "name": "Kitchen & Dining"
+      },
+      {
+        "id": "furniture",
+        "name": "Furniture"
+      },
+      {
+        "id": "home-decoration",
+        "name": "Home Décor"
+      }
+    ]
+  },
+  {
+    "id": "beauty",
+    "name": "Beauty & Personal Care",
+    "categories": [
+      {
+        "id": "beauty",
+        "name": "Makeup"
+      },
+      {
+        "id": "fragrances",
+        "name": "Fragrances"
+      },
+      {
+        "id": "skin-care",
+        "name": "Skin Care"
+      }
+    ]
+  },
+  {
+    "id": "grocery",
+    "name": "Grocery",
+    "categories": [
+      {
+        "id": "groceries",
+        "name": "Grocery"
+      }
+    ]
+  },
+  {
+    "id": "sports",
+    "name": "Sports & Outdoors",
+    "categories": [
+      {
+        "id": "sports-accessories",
+        "name": "Sports Equipment"
+      }
+    ]
+  },
+  {
+    "id": "automotive",
+    "name": "Automotive",
+    "categories": [
+      {
+        "id": "motorcycle",
+        "name": "Motorcycles"
+      },
+      {
+        "id": "vehicle",
+        "name": "Cars"
+      }
+    ]
+  }
+]

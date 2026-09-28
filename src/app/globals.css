@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --color-nav: #131921;
+  --color-nav-2: #232f3e;
+  --color-nav-3: #37475a;
+  --color-ink: #0f1111;
+  --color-muted: #565959;
+  --color-link: #007185;
+  --color-link-hover: #c7511f;
+  --color-page: #e3e6e6;
+  --color-line: #d5d9d9;
+  --color-yellow: #ffd814;
+  --color-yellow-hover: #f7ca00;
+  --color-orange: #ffa41c;
+  --color-orange-hover: #fa8900;
+  --color-search: #febd69;
+  --color-search-hover: #f3a847;
+  --color-deal: #cc0c39;
+  --color-star: #ffa41c;
+  --color-success: #007600;
+  --color-prime: #00a8e1;
+  --font-sans: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+body {
+  background: #fff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+@layer components {
+  .btn-yellow {
+    @apply rounded-full bg-yellow px-4 py-1.5 text-sm text-ink shadow-sm transition-colors hover:bg-yellow-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-orange {
+    @apply rounded-full bg-orange px-4 py-1.5 text-sm text-ink shadow-sm transition-colors hover:bg-orange-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-outline {
+    @apply rounded-full border border-line bg-white px-4 py-1.5 text-sm text-ink shadow-sm transition-colors hover:bg-[#f7fafa] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link;
+  }
+  .link {
+    @apply text-link hover:text-link-hover hover:underline;
+  }
+  .nav-hover {
+    @apply rounded-sm border border-transparent hover:border-white;
+  }
+  .card {
+    @apply bg-white p-5;
+  }
+  .input {
+    @apply w-full rounded-md border border-[#888c8c] px-3 py-1.5 text-sm shadow-[0_1px_2px_rgba(15,17,17,.15)_inset] outline-none focus:border-[#007185] focus:shadow-[0_0_0_3px_#c8f3fa,0_1px_2px_rgba(15,17,17,.15)_inset];
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@keyframes slidein {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@keyframes drawer {
+  from { transform: translateX(100%); opacity: 0.6; }
+  to { transform: translateX(0); opacity: 1; }
+}
