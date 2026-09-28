@@ -106,6 +106,7 @@ export function SearchBar({ departments }: { departments: { id: string; name: st
             {deptName} <span className="text-[8px]">▼</span>
           </span>
           <select
+            aria-label="Search department"
             value={dept}
             onChange={(e) => setDept(e.target.value)}
             className="absolute inset-0 cursor-pointer opacity-0"

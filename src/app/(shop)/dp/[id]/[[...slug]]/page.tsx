@@ -14,6 +14,7 @@ import { MiniCard } from "@/components/product-card";
 import { RatingHistogram, ReviewList } from "@/components/reviews";
 import { BrowsingHistoryRow, RecordView } from "@/components/browsing-history";
 import { HeartButton } from "@/components/add-to-list";
+import { createClient } from "@/lib/supabase/server";
 
 export async function generateMetadata({ params }: PageProps<"/dp/[id]/[[...slug]]">): Promise<Metadata> {
   const p = getProduct(Number((await params).id));
@@ -31,6 +32,17 @@ export default async function ProductPage({ params }: PageProps<"/dp/[id]/[[...s
   fast.setHours(fast.getHours() + 20);
   const cp = toCartProduct(p);
   const also = related(p);
+  const supabase = await createClient();
+  const { data: written } = await supabase
+    .from("reviews")
+    .select("rating, title, body, author_name, created_at, verified")
+    .eq("product_id", p.id)
+    .order("created_at", { ascending: false })
+    .limit(20);
+  const reviews = [
+    ...(written ?? []).map((r) => ({ rating: r.rating, title: r.title, comment: r.body, name: r.author_name, date: r.created_at, verified: r.verified })),
+    ...p.reviews,
+  ];
 
   const bullets = [
     p.description,
@@ -171,7 +183,7 @@ export default async function ProductPage({ params }: PageProps<"/dp/[id]/[[...s
         </div>
         <div>
           <h3 className="mb-4 text-lg font-bold">Top reviews from the United States</h3>
-          <ReviewList reviews={p.reviews} />
+          <ReviewList reviews={reviews} />
         </div>
       </section>
 
