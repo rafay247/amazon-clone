@@ -15,6 +15,7 @@ import { RatingHistogram, ReviewList } from "@/components/reviews";
 import { BrowsingHistoryRow, RecordView } from "@/components/browsing-history";
 import { HeartButton } from "@/components/add-to-list";
 import { MobileBuyBar } from "@/components/mobile-buy-bar";
+import { AskAboutItem } from "@/components/ask-about-item";
 import { createClient } from "@/lib/supabase/server";
 
 export async function generateMetadata({ params }: PageProps<"/dp/[id]/[[...slug]]">): Promise<Metadata> {
@@ -159,6 +160,7 @@ export default async function ProductPage({ params }: PageProps<"/dp/[id]/[[...s
             returnPolicy={p.returnPolicy}
             brand={p.brand}
           />
+          <AskAboutItem />
         </div>
       </div>
 
