@@ -109,7 +109,7 @@ export function SearchBar({ departments }: { departments: { id: string; name: st
             aria-label="Search department"
             value={dept}
             onChange={(e) => setDept(e.target.value)}
-            className="absolute inset-0 cursor-pointer opacity-0"
+            className="absolute inset-0 cursor-pointer bg-white text-sm text-[#0f1111] opacity-0 [&>option]:bg-white [&>option]:text-[#0f1111]"
           >
             <option value="">All Departments</option>
             {departments.map((d) => (
