@@ -12,7 +12,7 @@ export function totals(lines: { price: number; qty: number }[]) {
   return { subtotal, shipping, tax, total: round(subtotal + shipping + tax) };
 }
 
-/** All-Prime orders arrive tomorrow; anything else in five days. */
+/** All-Express orders arrive tomorrow; anything else in five days. */
 export function orderDelivery(lines: { prime: boolean }[], from = new Date()) {
   const d = new Date(from);
   d.setDate(d.getDate() + (lines.every((l) => l.prime) ? 1 : 5));

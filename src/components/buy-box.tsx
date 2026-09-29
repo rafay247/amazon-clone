@@ -93,9 +93,9 @@ export function BuyBox({
       </p>
       <dl className="mt-3 grid grid-cols-[80px_1fr] gap-y-1 text-xs">
         <dt className="text-muted">Ships from</dt>
-        <dd>Amazon.clone</dd>
+        <dd>Cartly</dd>
         <dt className="text-muted">Sold by</dt>
-        <dd className="text-link">{brand ?? "Amazon.clone"}</dd>
+        <dd className="text-link">{brand ?? "Cartly"}</dd>
         <dt className="text-muted">Returns</dt>
         <dd className="text-link">{returnPolicy}</dd>
       </dl>

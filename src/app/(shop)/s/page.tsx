@@ -43,7 +43,7 @@ function heading(q: SearchParams) {
 
 export async function generateMetadata({ searchParams }: PageProps<"/s">): Promise<Metadata> {
   const q = parse(await searchParams);
-  return { title: q.k ? `Amazon.clone : ${q.k}` : heading(q) };
+  return { title: q.k ? `Cartly : ${q.k}` : heading(q) };
 }
 
 export default async function SearchPage({ searchParams }: PageProps<"/s">) {
@@ -104,7 +104,7 @@ export default async function SearchPage({ searchParams }: PageProps<"/s">) {
           )}
           <Facet title="Delivery">
             <Toggle on={!!q.prime} href={href({ prime: q.prime ? null : "1" })}>
-              <span className="font-bold italic text-prime">prime</span> eligible
+              <span className="font-bold italic text-prime">express</span> eligible
             </Toggle>
             <Toggle on={!!q.deals} href={href({ deals: q.deals ? null : "1" })}>
               Today&apos;s Deals

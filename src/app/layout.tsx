@@ -5,10 +5,10 @@ import { CartSync } from "@/components/cart-sync";
 
 export const metadata: Metadata = {
   title: {
-    default: "Amazon.clone: Online Shopping for Electronics, Fashion, Home & more",
-    template: "%s · Amazon.clone",
+    default: "Cartly: Online Shopping for Electronics, Fashion, Home & more",
+    template: "%s · Cartly",
   },
-  description: "A working rebuild of the amazon.com shopping experience.",
+  description: "Cartly is a demo e-commerce store built as a portfolio project.",
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {

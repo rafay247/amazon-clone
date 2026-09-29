@@ -31,7 +31,7 @@ export function CartView() {
           <section className="bg-white px-5 pt-5 pb-3">
             {active.length === 0 ? (
               <div className="pb-4">
-                <h1 className="text-2xl font-bold">Your Amazon.clone Cart is empty</h1>
+                <h1 className="text-2xl font-bold">Your Cartly cart is empty</h1>
                 <p className="mt-2 text-sm">
                   Your shopping cart lives to serve. Give it purpose — fill it with groceries, clothing, household supplies,
                   electronics, and more. Continue shopping on the{" "}

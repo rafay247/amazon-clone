@@ -13,7 +13,7 @@ export function compact(n: number) {
   return n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/, "")}K` : String(n);
 }
 
-/** Estimated delivery: Prime next day, otherwise 4-6 days out. */
+/** Estimated delivery: Express next day, otherwise 4-6 days out. */
 export function deliveryDate(prime: boolean, from = new Date()) {
   const d = new Date(from);
   d.setDate(d.getDate() + (prime ? 1 : 5));

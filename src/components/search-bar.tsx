@@ -127,7 +127,7 @@ export function SearchBar({ departments }: { departments: { id: string; name: st
           }}
           onFocus={() => setOpen(true)}
           onKeyDown={onKey}
-          placeholder="Search Amazon.clone"
+          placeholder="Search Cartly"
           aria-label="Search"
           role="combobox"
           aria-expanded={open && shown.length > 0}
@@ -179,7 +179,7 @@ export function SearchBar({ departments }: { departments: { id: string; name: st
   );
 }
 
-/** Amazon bolds the part you haven't typed yet. */
+/** Bold the part you haven't typed yet. */
 function Highlight({ text, q }: { text: string; q: string }) {
   const t = q.trim().toLowerCase();
   const i = text.toLowerCase().indexOf(t);

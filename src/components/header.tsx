@@ -31,7 +31,7 @@ export function Header({ user }: { user: SessionUser }) {
         <Logo />
         <DeliverToButton />
         <div className="flex-1 md:hidden" />
-        {/* Below md the search box takes its own full-width row, like the Amazon app. */}
+        {/* Below md the search box takes its own full-width row. */}
         <div className="order-last flex min-w-0 basis-full md:order-none md:basis-auto md:flex-1">
           <Suspense fallback={<div className="h-10 flex-1 rounded-md bg-white" />}>
             <SearchBar departments={depts} />

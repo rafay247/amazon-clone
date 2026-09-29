@@ -11,7 +11,7 @@ const pick = (cat: string, n = 3) => inCategory(cat, n).map((p) => p.thumbnail);
 const SLIDES: Slide[] = [
   {
     title: "Tech that keeps up",
-    subtitle: "Phones, laptops and accessories, with Prime delivery tomorrow.",
+    subtitle: "Phones, laptops and accessories, with Express delivery tomorrow.",
     cta: "Shop electronics",
     href: "/s?dept=electronics",
     bg: "linear-gradient(120deg,#0f2b46 0%,#1b5e8c 55%,#37a0c9 100%)",

@@ -6,7 +6,7 @@ const COLS = [
   {
     title: "Get to Know Us",
     links: [
-      { href: "/about", label: "About this clone" },
+      { href: "/about", label: "About Cartly" },
       { href: "https://github.com/rafay247/amazon-clone", label: "Source code" },
     ],
   },
@@ -62,7 +62,7 @@ export function Footer() {
         <Logo />
       </div>
       <div className="bg-nav px-4 py-6 text-center text-xs text-[#ddd]">
-        A portfolio rebuild of amazon.com for the 8x assignment. Not affiliated with Amazon.com, Inc.
+        Cartly is a portfolio demo store built for the 8x assignment. No real payments are taken.
         <br />
         Product data from DummyJSON. No real payments are taken.
       </div>

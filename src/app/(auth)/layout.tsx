@@ -14,10 +14,10 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
             Home
           </Link>
           <Link href="/about" className="link">
-            About this clone
+            About Cartly
           </Link>
         </div>
-        <p className="mt-2 text-muted">A portfolio rebuild. Not affiliated with Amazon.com, Inc.</p>
+        <p className="mt-2 text-muted">A portfolio demo store. No real payments are taken.</p>
       </footer>
     </div>
   );

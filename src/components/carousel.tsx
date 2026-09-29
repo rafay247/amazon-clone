@@ -2,7 +2,7 @@
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-/** Horizontal scroller with Amazon's side paddles. */
+/** Horizontal scroller with side paddles. */
 export function Carousel({ children, label }: { children: React.ReactNode; label: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const scroll = (dir: number) =>

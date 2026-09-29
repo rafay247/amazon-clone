@@ -89,7 +89,7 @@ export default async function ProductPage({ params }: PageProps<"/dp/[id]/[[...s
           </div>
           {p.ratingCount > 20000 && (
             <span className="mt-1 inline-block rounded-sm bg-nav px-1.5 py-0.5 text-xs text-white">
-              Amazon.clone&apos;s <span className="text-orange">Choice</span>
+              Cartly&apos;s <span className="text-orange">Choice</span>
             </span>
           )}
           {p.boughtPastMonth > 0 && (

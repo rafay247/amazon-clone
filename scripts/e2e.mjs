@@ -53,7 +53,6 @@ try {
   step("sign in (redirected from checkout)");
   await page.waitForURL((u) => u.pathname === "/signin");
   await page.getByLabel("Email").fill(DEMO.email);
-  await page.getByRole("button", { name: "Continue" }).click();
   await page.getByLabel("Password").fill(DEMO.password);
   await page.getByRole("button", { name: "Sign in" }).click();
   await page.waitForURL((u) => u.pathname === "/checkout");

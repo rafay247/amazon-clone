@@ -25,7 +25,7 @@ export function AddressBook({ addresses, userName }: { addresses: Address[]; use
         <div key={a.id} className="flex min-h-[250px] flex-col rounded-lg border border-line text-sm">
           {a.is_default ? (
             <p className="border-b border-line px-5 py-2 text-xs text-muted">
-              Default: <span className="font-bold text-ink">Amazon.clone</span>
+              Default: <span className="font-bold text-ink">Cartly</span>
             </p>
           ) : (
             <div className="h-[33px]" />
